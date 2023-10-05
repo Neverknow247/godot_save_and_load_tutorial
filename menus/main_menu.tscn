@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5q2gww4vmudn"]
+
+[ext_resource type="Theme" uid="uid://cymbtmi8h011n" path="res://themes/menu_theme.tres" id="1_xt31h"]
+[ext_resource type="Script" path="res://menus/main_menu.gd" id="2_kqnos"]
+[ext_resource type="Texture2D" uid="uid://b4ofjhuodwqaf" path="res://icon.svg" id="3_mv6xf"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_xt31h")
+script = ExtResource("2_kqnos")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(118, 95)
+texture = ExtResource("3_mv6xf")
+
+[node name="save_name_label" type="Label" parent="."]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 0
+offset_left = 718.0
+offset_top = 399.0
+offset_right = 1118.0
+offset_bottom = 475.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 841.0
+offset_top = 579.0
+offset_right = 997.0
+offset_bottom = 660.0
+text = "Back"
+
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
