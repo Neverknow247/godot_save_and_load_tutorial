@@ -3,24 +3,28 @@ extends Node
 var stats = Stats
 var utils = Utils
 
-var dev_mode = true
+var dev_mode = stats.dev_mode
 
 var SAVE_DATA_PATH
 var SAVE_SETTINGS_PATH
 
-var default_save_data = stats.save_data
+var default_save_data = stats.new_save_data
+
+func _ready():
+	var logged_settings_path
+	if dev_mode == true:
+		logged_settings_path = "res://save_data/settings.cfg"
+	else:
+		logged_settings_path = "user://settings.cfg"
+	SAVE_SETTINGS_PATH = logged_settings_path
 
 func change_save_location():
 	var logged_data_path
-	var logged_settings_path
 	if dev_mode == true:
 		logged_data_path = "res://save_data/%s_save_data.dat" % [stats.save_slot]
-		logged_settings_path = "res://save_data/%s_settings.cfg" % [stats.save_slot]
 	else:
 		logged_data_path = "user://%s_save_data.dat" % [stats.save_slot]
-		logged_settings_path = "user://%s_settings.cfg" % [stats.save_slot]
 	SAVE_DATA_PATH = logged_data_path
-	SAVE_SETTINGS_PATH = logged_settings_path
 
 func save_all():
 	update_save_data()
